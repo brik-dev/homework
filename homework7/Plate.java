@@ -18,4 +18,16 @@ public class Plate
         System.out.println("plate: " + food);
     }
 
+    public int getFood()
+    {
+        return food;
+    }
+
+    // 6. Добавить в тарелку метод, с помощью которого можно было бы добавлять еду в тарелку
+    public void putFood(int n)
+    {
+        food += n;
+        System.out.println("Plate is full again.");
+    }
+
 }
