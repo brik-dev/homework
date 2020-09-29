@@ -11,9 +11,9 @@ public class Background extends GameCanvas {
     public static void updateColorCanvas(GameCanvas canvas,float deltaTime) {
 
         Color color = new Color(
-                (int) (Math.random() * 255), //r
-                (int) (Math.random() * 255), //g
-                (int) (Math.random() * 255)  //b
+                (int) (Math.random() * 255),
+                (int) (Math.random() * 255),
+                (int) (Math.random() * 255)
 
         );
         canvas.setBackground(color);

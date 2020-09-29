@@ -12,10 +12,10 @@ import java.awt.*;
  */
 
 public class MainCircles extends JFrame {
-    protected static final int POS_X = 400;
-    protected static final int POS_Y = 200;
-    protected static final int WINDOW_WIDTH = 800;
-    protected static final int WINDOW_HEIGHT = 600;
+    private static final int POS_X = 400;
+    private static final int POS_Y = 200;
+    private static final int WINDOW_WIDTH = 800;
+    private static final int WINDOW_HEIGHT = 600;
     Sprite[] sprites = new Sprite[10];
 
     public static void main(String[] args) {
@@ -48,7 +48,7 @@ public class MainCircles extends JFrame {
     void onDrawFrame(GameCanvas canvas, Graphics g, float deltaTime) {
         update(canvas, deltaTime);
         render(canvas, g);
-        Background.updateColorCanvas(canvas, deltaTime + 1000);
+        Background.updateColorCanvas(canvas, deltaTime);
     }
 
     private void update(GameCanvas canvas, float deltaTime) {
