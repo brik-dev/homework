@@ -6,6 +6,7 @@ import java.awt.*;
 public class GameCanvas extends JPanel {
     long lastFrameTime;
     MainCircles gameController;
+    //Background background;
 
     GameCanvas(MainCircles gameController) {
         lastFrameTime = System.nanoTime();
@@ -33,4 +34,6 @@ public class GameCanvas extends JPanel {
     public int getTop() { return 0; }
     public int getBottom() { return getHeight() - 1; }
 
+    public void setBackground() {
+    }
 }

@@ -3,11 +3,19 @@ package java2.lesson1;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Полностью разобраться с кодом
+ * Прочитать методичку к следующему уроку
+ * Написать класс Бэкграунд, изменяющий цвет канвы в зависимости от времени
+ * * Реализовать добавление новых кружков по клику используя ТОЛЬКО массивы
+ * ** Реализовать по клику другой кнопки удаление кружков (никаких эррейЛист)
+ */
+
 public class MainCircles extends JFrame {
-    private static final int POS_X = 400;
-    private static final int POS_Y = 200;
-    private static final int WINDOW_WIDTH = 800;
-    private static final int WINDOW_HEIGHT = 600;
+    protected static final int POS_X = 400;
+    protected static final int POS_Y = 200;
+    protected static final int WINDOW_WIDTH = 800;
+    protected static final int WINDOW_HEIGHT = 600;
     Sprite[] sprites = new Sprite[10];
 
     public static void main(String[] args) {
@@ -25,6 +33,8 @@ public class MainCircles extends JFrame {
         GameCanvas canvas = new GameCanvas(this);
         initApplication();
         add(canvas);
+        add(canvas, BorderLayout.CENTER);
+        canvas.setBackground();
         setTitle("Circles");
         setVisible(true);
     }
@@ -36,9 +46,9 @@ public class MainCircles extends JFrame {
     }
 
     void onDrawFrame(GameCanvas canvas, Graphics g, float deltaTime) {
-        update(canvas, deltaTime); // obnovlenie // S = v * t
-        render(canvas, g);         // otrisovka
-
+        update(canvas, deltaTime);
+        render(canvas, g);
+        Background.updateColorCanvas(canvas, deltaTime + 1000);
     }
 
     private void update(GameCanvas canvas, float deltaTime) {
