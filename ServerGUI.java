@@ -1,9 +1,9 @@
-package lesson_four.lesson;
+package lesson_four.homework;
 
-    import javax.swing.*;
-    import java.awt.*;
-    import java.awt.event.ActionEvent;
-    import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ServerGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler{
     private static final int POS_X = 1000;

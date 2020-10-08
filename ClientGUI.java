@@ -1,11 +1,20 @@
-/* package lesson_four.homework;
+package lesson_four.homework;
+/**
+ * Домашнее задание №4
+ * Отправлять сообщения в лог по нажатию кнопки или по нажатию клавиши Enter.
+ * Создать лог в файле
+ */
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-    //public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
+public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 300;
 
@@ -23,6 +32,7 @@ import java.awt.event.ActionListener;
     private final JButton btnDisconnect = new JButton("<html><b>Disconnect</b></html>");
     private final JTextField tfMessage = new JTextField();
     private final JButton btnSend = new JButton("Send");
+    private final static String newline = "\n";
 
     private final JList<String> userList = new JList<>();
 
@@ -56,11 +66,15 @@ import java.awt.event.ActionListener;
         panelBottom.add(btnDisconnect, BorderLayout.WEST);
         panelBottom.add(tfMessage, BorderLayout.CENTER);
         panelBottom.add(btnSend, BorderLayout.EAST);
+        getRootPane().setDefaultButton(btnSend); // set btnSend as the default button
 
         add(scrollLog, BorderLayout.CENTER);
         add(scrollUser, BorderLayout.EAST);
         add(panelTop, BorderLayout.NORTH);
         add(panelBottom, BorderLayout.SOUTH);
+
+        btnSend.addActionListener(this);
+        btnDisconnect.addActionListener(this);
 
         setVisible(true);
     }
@@ -71,7 +85,25 @@ import java.awt.event.ActionListener;
         if(src == cbAlwaysOnTop){
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
 
-        }else {
+        }else if(src == btnSend){  //Отправлять сообщения в лог по нажатию кнопки или по нажатию клавиши Enter.
+            String text = new String();
+            text = tfMessage.getText();
+            log.append(text + newline);
+            tfMessage.selectAll();
+
+        }else if(src == btnDisconnect){ // Создать лог в файле
+            try {
+                FileOutputStream doc = new FileOutputStream("log.txt", true);
+                doc.write(log.getText().getBytes());
+                doc.flush();
+                doc.close();
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+        else {
             throw new RuntimeException("unknown source " + src);
         }
     }
@@ -88,4 +120,4 @@ import java.awt.event.ActionListener;
         System.exit(1); // после этого мы завершаем работу нашего сервера
     }
 
-}*/
+}
