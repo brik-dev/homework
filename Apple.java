@@ -1,5 +1,9 @@
 package lesson_1.homework;
 
 public class Apple extends Fruit {
-    static final int weight = 200;
+    public final int weight = 200;
+
+    public int getWeight() {
+        return weight;
+    }
 }
