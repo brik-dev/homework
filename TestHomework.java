@@ -5,25 +5,25 @@ import org.junit.Test;
 public class TestHomework {
 
     @Test
-    public void TestArrayAfterLast4_1(){
+    public void arrayTailAfterLastFourTest_1(){
         int[] in = {1, 2, 4, 4, 2, 3, 4, 1, 7};
         int[] out = {1,7};
 
-        Assert.assertArrayEquals(out, CheckArray.arrayAfterLast4(in));
+        Assert.assertArrayEquals(out, CheckArray.arrayTailAfterLastFour(in));
     }
 
     @Test
-    public void TestArrayAfterLast4_2(){
+    public void arrayTailAfterLastFourTest_2(){
         int[] in = {0, 5, 4, 7, 2, 8};
         int[] out = {7,2,8};
 
-        Assert.assertArrayEquals(out, CheckArray.arrayAfterLast4(in));
+        Assert.assertArrayEquals(out, CheckArray.arrayTailAfterLastFour(in));
     }
 
     @Test(expected = RuntimeException.class)
-    public void TestArrayAfterLast4_3(){
+    public void arrayTailAfterLastFourTest_3(){
         int[] in = {8, 6, 9};
-        CheckArray.arrayAfterLast4(in);
+        CheckArray.arrayTailAfterLastFour(in);
     }
 
     @Test

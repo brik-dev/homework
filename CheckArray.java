@@ -2,30 +2,20 @@ package lesson_f.homework;
 
 public class CheckArray {
 
-    public static int[] arrayAfterLast4(int[] arr) {
-        int count = 0;
-        for (int j : arr) {
-            if (j == 4) {
-                count++;
+    public static int[] arrayTailAfterLastFour(int[] arr) {
+        if (arr.length == 0)
+            throw new RuntimeException("empty array");
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == 4) {
+                if (i == arr.length - 1) {
+                    return(new int[]{});
+                }
+                int[] newArr = new int[arr.length - i - 1];
+                System.arraycopy(arr, i+1,newArr, 0, arr.length-i-1);
+                return newArr;
             }
         }
-        int[] result = new int[0];
-        if (count >= 1) {
-            int countAgain = 0;
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i] == 4) {
-                    countAgain++;
-                }
-                if (count == countAgain) {
-                    result = new int[arr.length - i - 1];
-                    for (int j = i + 1, k = 0; j < arr.length; j++, k++)
-                        result[k] = arr[j];
-                }
-            }
-        } else {
-            throw new RuntimeException();
-        }
-        return result;
+        throw new RuntimeException("couldn't find any digit 4 in input");
     }
 
     public static boolean checkArrayFor1And4(int[] arr) {
